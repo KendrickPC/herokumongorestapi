@@ -11,6 +11,10 @@ app.get("/", (req, res) => {
   res.send("HEROKU LETS GO ROUND 2!")
 })
 
+app.get("/api/welcome", (req, res) => {
+  res.status(200).send({message: "Welcome to Heroku Troubles 101"})
+})
+
 app.get("/nba", (req, res) => {
   res.send(importData)
 })
