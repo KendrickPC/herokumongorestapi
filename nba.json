@@ -3,5 +3,10 @@
     "name": "Stephen Curry",
     "team": "Dream Team",
     "ppg": 99
+  },
+  {
+    "name": "Steven Gerrard",
+    "team": "Liverpool",
+    "cardName": "Leaf Pearl Auto"
   }
 ]

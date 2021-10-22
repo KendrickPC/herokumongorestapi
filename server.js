@@ -8,7 +8,7 @@ const importData = require("./nba.json")
 
 
 app.get("/", (req, res) => {
-  res.send("HEROKU LETS GO!")
+  res.send("HEROKU LETS GO ROUND 2!")
 })
 
 app.get("/nba", (req, res) => {
