@@ -6,6 +6,21 @@ require("dotenv-flow").config();
 let PORT = process.env.PORT || 4000
 const importData = require("./nba.json")
 
+// import product routes
+const productRoutes = require("./routes/productRoute");
+
+app.use(bodyParser.json());
+
+mongoose.connect
+(
+  process.env.DBHOST,
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  }  
+).catch(error => console.log("Error connecting to MongoDB: " + error));
+
+mongoose.connection.once('open', () => console.log(`Connected successfully to MongoDB`))
 
 app.get("/", (req, res) => {
   res.send("HEROKU LETS GO ROUND 2!")
@@ -19,16 +34,8 @@ app.get("/nba", (req, res) => {
   res.send(importData)
 })
 
-mongoose.connect
-(
-  process.env.DBHOST,
-  {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  }  
-).catch(error => console.log("Error connecting to MongoDB: " + error));
+app.use("/api/products", productRoutes);
 
-mongoose.connection.once('open', () => console.log(`Connected successfully to MongoDB`))
 
 app.listen(PORT, function() {
   console.log("Server is running on port " + PORT )
