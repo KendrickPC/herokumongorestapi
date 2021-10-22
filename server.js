@@ -19,6 +19,17 @@ app.get("/nba", (req, res) => {
   res.send(importData)
 })
 
+mongoose.connect
+(
+  process.env.DBHOST,
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  }  
+).catch(error => console.log("Error connecting to MongoDB: " + error));
+
+mongoose.connection.once('open', () => console.log(`Connected successfully to MongoDB`))
+
 app.listen(PORT, function() {
   console.log("Server is running on port " + PORT )
 })
